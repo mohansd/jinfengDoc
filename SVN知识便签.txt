@@ -1,0 +1,12 @@
+
+SVN异常处理(五)-状态小图标不见了
+第一步：在注册表中找到Overlay Icon的位置
+
+【HKEY_LOCAL_MACHINE->SOFTWARE->Microsoft->Windows->CurrentVersion->Explorer->ShellIconOverlayIdentifiers】
+
+第二步：提高TortoiseXX的优先级别
+
+【选中文件夹，重命名，前面补充几个空格，然后重启注册表就OK】
+
+【补充Win10下Explorer.exe改名了，找到 Windows资源管理器 然后右击重启即可】
+https://www.cnblogs.com/kimisme/p/4965206.html

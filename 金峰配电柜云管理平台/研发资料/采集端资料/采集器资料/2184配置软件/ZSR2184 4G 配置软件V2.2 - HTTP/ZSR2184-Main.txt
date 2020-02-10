@@ -1,0 +1,414 @@
+{
+ "Comport": "COM7",
+ "ComOption": "8N1",
+ "Baudrate": "9600",
+ "ExParamChannel": 1,
+ "Params": [
+  {
+   "PNOTE": "",
+   "PNAME": "<串口参数>",
+   "ONSET": "",
+   "ONGET": "",
+   "ONLIST": "",
+   "PVALUE": "",
+   "CMDID": ""
+  },{
+   "PNOTE": "通信模块的波特率，默认9600，不能修改",
+   "PNAME": "串口波特率",
+   "ONSET": "",
+   "ONGET": "",
+   "ONLIST": [
+    [
+     "300","600","1200","2400","4800","9600","14400","19200","28800","38400","57600","115200"],[
+     "333030","363030","31323030","32343030","34383030","39363030","3134343030","3139323030","3238383030","3338343030","3537363030","313135323030"]],
+   "PVALUE": "HEX:",
+   "CMDID": "0045"
+  },{
+   "PNOTE": "",
+   "PNAME": "<众山物联云参数>",
+   "ONSET": "",
+   "ONGET": "",
+   "ONLIST": "",
+   "PVALUE": "",
+   "CMDID": ""
+  },{
+   "PNOTE": "开启或关闭物联云功能，设为开时,设备只通过众山物联云收发数据",
+   "PNAME": "云开关",
+   "ONSET": "",
+   "ONGET": "",
+   "ONLIST": [
+    [
+     "开启","关闭"],[
+     "01","00"]],
+   "PVALUE": "HEX:",
+   "CMDID": "0090"
+  },{
+   "PNOTE": "16位数字，出厂唯一编码，不可修改",
+   "PNAME": "云ID",
+   "ONSET": "SetHex();",
+   "ONGET": "GetHex();",
+   "ONLIST": "Length=16,Mask='1234567890ABCDEF'",
+   "PVALUE": "HEX:",
+   "CMDID": "0091"
+  },{
+   "PNOTE": "云透传的鉴权密码，6位字符，用户可自由设置",
+   "PNAME": "云密码",
+   "ONSET": "SetStr();",
+   "ONGET": "GetStr();",
+   "ONLIST": "Length=6",
+   "PVALUE": "HEX:",
+   "CMDID": "0092"
+  },{
+   "PNOTE": "仅当云开关设置为关时，此项参数才有效",
+   "PNAME": "<网络通信协议>",
+   "ONSET": "",
+   "ONGET": "",
+   "ONLIST": "",
+   "PVALUE": "",
+   "CMDID": ""
+  },{
+   "PNOTE": "DTU需要执行的脚本指令，编程方式参考“本地脚本采集指令使用手册”",
+   "PNAME": "本地采集脚本",
+   "ONSET": "SetStr();",
+   "ONGET": "GetStr();",
+   "ONLIST": "Length=400",
+   "PVALUE": "HEX:",
+   "CMDID": "0064"
+  },{
+   "PNOTE": "单位秒，DTU执行脚本命令的时间间隔",
+   "PNAME": "本地采集周期",
+   "ONSET": "SetDWord();",
+   "ONGET": "GetDWord();",
+   "ONLIST": "Length=11;Mask='1234567890'",
+   "PVALUE": "HEX:",
+   "CMDID": "0063"
+  },{
+   "PNOTE": "TCP\/UDP通信协议选择，-ZSD为众山私有协议，仅当云开关设置为关时，此项参数才有效",
+   "PNAME": "网络通信协议",
+   "ONSET": "",
+   "ONGET": "",
+   "ONLIST": [
+    [
+     "TCP-ZSD","UDP-ZSD","TCP Client","UDP Master"],[
+     "00","01","02","03"]],
+   "PVALUE": "HEX:",
+   "CMDID": "0040"
+  },{
+   "PNOTE": "仅当通信协议设置为-ZSD时，此项参数才需设置",
+   "PNAME": "<-ZSD协议下DTU登录参数>",
+   "ONSET": "",
+   "ONGET": "",
+   "ONLIST": "",
+   "PVALUE": "",
+   "CMDID": ""
+  },{
+   "PNOTE": "8位字符，同一数据中心中须保证ID号是唯一的",
+   "PNAME": "DTU身份识别ID",
+   "ONSET": "SetStr();",
+   "ONGET": "GetStr();",
+   "ONLIST": "Length=8",
+   "PVALUE": "HEX:",
+   "CMDID": "0030"
+  },{
+   "PNOTE": "6位字符，用于DTU登陆中心时，进行身份验证",
+   "PNAME": "数据中心登录密码",
+   "ONSET": "SetStr();",
+   "ONGET": "GetStr();",
+   "ONLIST": "Length=6",
+   "PVALUE": "HEX:",
+   "CMDID": "0031"
+  },{
+   "PNOTE": "仅当云开关设置为关时，此项参数才需要设置",
+   "PNAME": "<自建数据接收中心参数>",
+   "ONSET": "",
+   "ONGET": "",
+   "ONLIST": "",
+   "PVALUE": "",
+   "CMDID": ""
+  },{
+   "PNOTE": "若设置多个中心，请用逗号分隔",
+   "PNAME": "主数据中心 IP地址或域名",
+   "ONSET": "SetStr();",
+   "ONGET": "GetStr();",
+   "ONLIST": "Length=100",
+   "PVALUE": "HEX:",
+   "CMDID": "0041"
+  },{
+   "PNOTE": "建议使用10000-65000之间的端口号，可以和备用中心端口号不同",
+   "PNAME": "主数据中心侦听端口号",
+   "ONSET": "SetStr();",
+   "ONGET": "GetStr();",
+   "ONLIST": "Length=20,Mask='1234567890,'",
+   "PVALUE": "HEX:",
+   "CMDID": "0042"
+  },{
+   "PNOTE": "若设置多个中心，请用逗号分隔",
+   "PNAME": "备用数据中心 IP地址或域名",
+   "ONSET": "SetStr();",
+   "ONGET": "GetStr();",
+   "ONLIST": "Length=100",
+   "PVALUE": "HEX:",
+   "CMDID": "0060"
+  },{
+   "PNOTE": "建议使用10000-65000之间的端口号，可以和备用中心端口号不同",
+   "PNAME": "备用数据中心侦听端口号",
+   "ONSET": "SetStr();",
+   "ONGET": "GetStr();",
+   "ONLIST": "Length=20,Mask='1234567890,'",
+   "PVALUE": "HEX:",
+   "CMDID": "0061"
+  },{
+   "PNOTE": "只有在网络通信协议选择TCP Client模式及UDP Master模式时才需要设置",
+   "PNAME": "DTU登陆模式",
+   "ONSET": "",
+   "ONGET": "",
+   "ONLIST": [
+    [
+     "无登陆包","有登陆包，中心无应答","有登陆包，中心有应答"],[
+     "00","01","02"]],
+   "PVALUE": "HEX:",
+   "CMDID": "0050"
+  },{
+   "PNOTE": "HEX格式，最大长度为30字节，仅用于TCP Client模式及UDP Master模式",
+   "PNAME": "登录包发送内容",
+   "ONSET": "SetVLenHex();",
+   "ONGET": "GetVLenHex();",
+   "ONLIST": "Length=30;Mask='1234567890ABCDEFabcdef'",
+   "PVALUE": "HEX:",
+   "CMDID": "004C"
+  },{
+   "PNOTE": "HEX格式，最大长度为30字节，只有在网络通信协议选择TCP Client模式及UDP Master模式时才需要设置",
+   "PNAME": "登陆包 数据中心应答内容",
+   "ONSET": "SetVLenHex();",
+   "ONGET": "GetVLenHex();",
+   "ONLIST": "Length=30;Mask='1234567890ABCDEFabcdef'",
+   "PVALUE": "HEX:",
+   "CMDID": "0051"
+  },{
+   "PNOTE": "HEX格式，最大长度为30字节，仅用于TCP Client模式及UDP Master模式",
+   "PNAME": "数据包前缀内容",
+   "ONSET": "SetVLenHex();",
+   "ONGET": "GetVLenHex();",
+   "ONLIST": "Length=30;Mask='1234567890ABCDEFabcdef'",
+   "PVALUE": "HEX:",
+   "CMDID": "004D"
+  },{
+   "PNOTE": "默认为60秒，采用UDP Client或UDP Master时，建议修改为30秒",
+   "PNAME": "心跳时间间隔",
+   "ONSET": "SetWord();",
+   "ONGET": "GetWord();",
+   "ONLIST": "Length=5;Mask='1234567890'",
+   "PVALUE": "HEX:",
+   "CMDID": "0044"
+  },{
+   "PNOTE": "只有在网络通信协议选择TCP Client模式及UDP Master模式时才需要设置",
+   "PNAME": "心跳模式",
+   "ONSET": "",
+   "ONGET": "",
+   "ONLIST": [
+    [
+     "无心跳包","有心跳包，中心无应答","有心跳包，中心有应答"],[
+     "00","01","02"]],
+   "PVALUE": "HEX:",
+   "CMDID": "0049"
+  },{
+   "PNOTE": "HEX格式，最大长度为30字节，只有在网络通信协议选择TCP Client模式及UDP Master模式时才需要设置",
+   "PNAME": "心跳包发送内容",
+   "ONSET": "SetVLenHex();",
+   "ONGET": "GetVLenHex();",
+   "ONLIST": "Length=30;Mask='1234567890ABCDEFabcdef'",
+   "PVALUE": "HEX:",
+   "CMDID": "004A"
+  },{
+   "PNOTE": "HEX格式，最大长度为30字节，只有在网络通信协议选择TCP Client模式及UDP Master模式时才需要设置",
+   "PNAME": "心跳包 数据中心应答内容",
+   "ONSET": "SetVLenHex();",
+   "ONGET": "GetVLenHex();",
+   "ONLIST": "Length=30;Mask='1234567890ABCDEFabcdef'",
+   "PVALUE": "HEX:",
+   "CMDID": "004B"
+  },{
+   "PNOTE": "仅适用于ZSR2184-GPRS，其他型号设置无效",
+   "PNAME": "<短信相关参数>",
+   "ONSET": "",
+   "ONGET": "",
+   "ONLIST": "",
+   "PVALUE": "",
+   "CMDID": ""
+  },{
+   "PNOTE": "接收短信的号码，若设置多个号码，请用逗号分隔",
+   "PNAME": "短信接收号码",
+   "ONSET": "SetStr();",
+   "ONGET": "GetStr();",
+   "ONLIST": "Length=120,Mask='1234567890,'",
+   "PVALUE": "HEX:",
+   "CMDID": "003D"
+  },{
+   "PNOTE": "用于短信配置参数，若设置多个号码，请用逗号分隔",
+   "PNAME": " 管理员号码",
+   "ONSET": "SetStr();",
+   "ONGET": "GetStr();",
+   "ONLIST": "Length=120,Mask='1234567890,'",
+   "PVALUE": "HEX:",
+   "CMDID": "003E"
+  },{
+   "PNOTE": "使用HTTP通讯才需要关心下面的参数",
+   "PNAME": "<基于HTTP的WEB应用相关参数>",
+   "ONSET": "",
+   "ONGET": "",
+   "ONLIST": "",
+   "PVALUE": "",
+   "CMDID": ""
+  },{
+   "PNOTE": "使用TCP Client模式且允许HTTP协议时，DTU使用HTTP通讯",
+   "PNAME": "HTTP协议允许",
+   "ONSET": "",
+   "ONGET": "",
+   "ONLIST": [
+    [
+     "开启","关闭"],[
+     "01","00"]],
+   "PVALUE": "HEX:",
+   "CMDID": "0053"
+  },{
+   "PNOTE": "POST方法在消息体携带数据，GET方法在URL中携带数据",
+   "PNAME": "HTTP方法",
+   "ONSET": "",
+   "ONGET": "",
+   "ONLIST": [
+    [
+     "POST","GET"],[
+     "00","01"]],
+   "PVALUE": "HEX:",
+   "CMDID": "0054"
+  },{
+   "PNOTE": "默认短连接，DTU在中心断开后等待下次有数据时再连接，长连接时DTU保持永远连接中心",
+   "PNAME": "长连接短连接",
+   "ONSET": "",
+   "ONGET": "",
+   "ONLIST": [
+    [
+     "短连接","长连接"],[
+     "00","01"]],
+   "PVALUE": "HEX:",
+   "CMDID": "005A"
+  },{
+   "PNOTE": "开启时，DTU输出HTTP应答所有信息，便于调试时从DTU端观察服务器应答",
+   "PNAME": "HTTP头输出",
+   "ONSET": "",
+   "ONGET": "",
+   "ONLIST": [
+    [
+     "关闭","开启"],[
+     "00","01"]],
+   "PVALUE": "HEX:",
+   "CMDID": "0058"
+  },{
+   "PNOTE": "HTTP服务器的URL地址",
+   "PNAME": "HTTP URL地址",
+   "ONSET": "SetStr();",
+   "ONGET": "GetStr();",
+   "ONLIST": "Length=99",
+   "PVALUE": "HEX:",
+   "CMDID": "0055"
+  },{
+   "PNOTE": "HTTP服务器的IP或域名、端口，格式为：domain:port",
+   "PNAME": "HTTP HOST主机地址",
+   "ONSET": "SetStr();",
+   "ONGET": "GetStr();",
+   "ONLIST": "Length=99",
+   "PVALUE": "HEX:",
+   "CMDID": "0056"
+  },{
+   "PNOTE": "某些浏览器需要特定的头信息时，在这里填写，多条信息时用
+分隔，最后一条不带
+",
+   "PNAME": "HTTP其他头信息",
+   "ONSET": "SetStr();",
+   "ONGET": "GetStr();",
+   "ONLIST": "Length=99",
+   "PVALUE": "HEX:",
+   "CMDID": "0057"
+  },{
+   "PNOTE": "发送数据采用KEY=VALUE格式，定义不同的KEY，HTTP服务器可以区分不同的设备或数据",
+   "PNAME": "HTTP发送数据KEY",
+   "ONSET": "SetStr();",
+   "ONGET": "GetStr();",
+   "ONLIST": "Length=63",
+   "PVALUE": "HEX:",
+   "CMDID": "0059"
+  },{
+   "PNOTE": "以下参数一般不需设置，保持默认即可",
+   "PNAME": "<高级参数>",
+   "ONSET": "",
+   "ONGET": "",
+   "ONLIST": "",
+   "PVALUE": "",
+   "CMDID": ""
+  },{
+   "PNOTE": "一般为CMNET，使用APN专网时设置专用名称",
+   "PNAME": "APN名称",
+   "ONSET": "SetStr();",
+   "ONGET": "GetStr();",
+   "ONLIST": "Length=30",
+   "PVALUE": "HEX:",
+   "CMDID": "0032"
+  },{
+   "PNOTE": "一般为WAP，使用APN专网时设置专用名称",
+   "PNAME": "APN用户名",
+   "ONSET": "SetStr();",
+   "ONGET": "GetStr();",
+   "ONLIST": "Length=30",
+   "PVALUE": "HEX:",
+   "CMDID": "0033"
+  },{
+   "PNOTE": "一般为WAP，使用APN专网时设置专用密码",
+   "PNAME": "APN密码",
+   "ONSET": "SetStr();",
+   "ONGET": "GetStr();",
+   "ONLIST": "Length=30",
+   "PVALUE": "HEX:",
+   "CMDID": "0034"
+  },{
+   "PNOTE": "建议修改为当地稳定的DNS服务器地址或保持默认",
+   "PNAME": "主DNS IP地址",
+   "ONSET": "SetIP();",
+   "ONGET": "GetIP();",
+   "ONLIST": "",
+   "PVALUE": "HEX:",
+   "CMDID": "0035"
+  },{
+   "PNOTE": "建议修改为当地稳定的DNS服务器地址或保持默认",
+   "PNAME": "副DNS IP地址",
+   "ONSET": "SetIP();",
+   "ONGET": "GetIP();",
+   "ONLIST": "",
+   "PVALUE": "HEX:",
+   "CMDID": "0036"
+  },{
+   "PNOTE": "优先使用PPP拨号获得的DNS地址",
+   "PNAME": "自动获得DNS 允许",
+   "ONSET": "",
+   "ONGET": "",
+   "ONLIST": [
+    [
+     "开启","关闭"],[
+     "01","00"]],
+   "PVALUE": "HEX:",
+   "CMDID": "0037"
+  },{
+   "PNOTE": "保持默认,不能修改",
+   "PNAME": "调试模式",
+   "ONSET": "",
+   "ONGET": "",
+   "ONLIST": [
+    [
+     "开启","关闭"],[
+     "0A","00"]],
+   "PVALUE": "HEX:",
+   "CMDID": "F000"
+  }],
+ "Buttons": [],
+ "Title": " （ZSTEL 4G\/GPRS RTU） ",
+ "ExParamFile": "jkcs.txt"
+}

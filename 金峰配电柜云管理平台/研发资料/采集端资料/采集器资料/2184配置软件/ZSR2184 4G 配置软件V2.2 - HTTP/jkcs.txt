@@ -1,0 +1,798 @@
+{
+ "Comport": "COM1",
+ "ComOption": "8N1",
+ "Baudrate": "9600",
+ "Params": [
+  {
+   "PNOTE": "",
+   "PNAME": "<基本参数>",
+   "ONSET": "",
+   "ONGET": "",
+   "ONLIST": "",
+   "PVALUE": "",
+   "CMDID": ""
+  },{
+   "PNOTE": "Modbus地址，默认为100，如外接485设备为Modbus协议，则必须和2184自己的Modbus地址不一样",
+   "PNAME": "Modbus地址",
+   "ONSET": "SetByte();",
+   "ONGET": "GetByte();",
+   "ONLIST": "",
+   "PVALUE": "HEX:",
+   "CMDID": "003D"
+  },{
+   "PNOTE": "模拟量的采集周期，单位为秒，定义8路模拟量的采样频率",
+   "PNAME": "AI采样周期",
+   "ONSET": "SetWord();",
+   "ONGET": "GetWord();",
+   "ONLIST": "",
+   "PVALUE": "HEX:",
+   "CMDID": "0441"
+  },{
+   "PNOTE": "当DI变化或AI超过上下限值，配置RTU通过哪种方式上报",
+   "PNAME": "告警通道选择",
+   "ONSET": "",
+   "ONGET": "",
+   "ONLIST": [
+    [
+     "不告警","4G网络告警","短信告警","4G+短信告警","LORA告警"],[
+     "00","01","02","03","04"]],
+   "PVALUE": "HEX:",
+   "CMDID": "0440"
+  },{
+   "PNOTE": "ZSR2184外接485设备串口波特率，默认9600，支持1200-115200",
+   "PNAME": "RS485串口波特率",
+   "ONSET": "",
+   "ONGET": "",
+   "ONLIST": [
+    [
+     "1200","2400","4800","9600","14400","19200","28800","38400","57600","115200"],[
+     "31323030","32343030","34383030","39363030","3134343030","3139323030","3238383030","3338343030","3537363030","313135323030"]],
+   "PVALUE": "HEX:",
+   "CMDID": "F00C"
+  },{
+   "PNOTE": "数据位，停止位，奇偶校验设置",
+   "PNAME": "外接485设备串口配置",
+   "ONSET": "",
+   "ONGET": "",
+   "ONLIST": [
+    [
+     "8N1","8E1","8O1","7N1","7E1","7O1","8N2","8E2","8O2","7N2","7E2","7O2"],[
+     "384E31","384531","384F31","374E31","374531","374F31","384E32","384532","384F32","374E32","374532","374F32"]],
+   "PVALUE": "HEX:",
+   "CMDID": "F00D"
+  },{
+   "PNOTE": "设置设备按周期自动采集AI/DI/DO和485仪表数据，编程方式参考“众山DTU脚本编程手册”",
+   "PNAME": "脚本内容",
+   "ONSET": "SetStr();",
+   "ONGET": "GetStr();",
+   "ONLIST": "Length=399",
+   "PVALUE": "HEX:",
+   "CMDID": "0064"
+  },{
+   "PNOTE": "单位秒，设备执行脚本命令的时间间隔",
+   "PNAME": "脚本执行周期",
+   "ONSET": "SetDWord();",
+   "ONGET": "GetDWord();",
+   "ONLIST": "Length=11;Mask='1234567890'",
+   "PVALUE": "HEX:",
+   "CMDID": "0063"
+  },{
+   "PNOTE": "",
+   "PNAME": "调试模式",
+   "ONSET": "",
+   "ONGET": "",
+   "ONLIST": [
+    [
+     "关","开"],[
+     "00","01"]],
+   "PVALUE": "HEX:",
+   "CMDID": "F000"
+  },{
+   "PNOTE": "",
+   "PNAME": "<DO继电器初始状态配置，即设备每次上电时DO的初始状态>",
+   "ONSET": "",
+   "ONGET": "",
+   "ONLIST": "",
+   "PVALUE": "",
+   "CMDID": ""
+  },{
+   "PNOTE": "定义第1路继电器的初始状态",
+   "PNAME": "DO1初始值",
+   "ONSET": "",
+   "ONGET": "",
+   "ONLIST": [
+    [
+     "低（断开）","高（导通）","记忆上一次的状态"],[
+     "00","01","02"]],
+   "PVALUE": "HEX:",
+   "CMDID": "0400"
+  },{
+   "PNOTE": "定义第2路继电器的初始状态",
+   "PNAME": "DO2初始值",
+   "ONSET": "",
+   "ONGET": "",
+   "ONLIST": [
+    [
+     "低（断开）","高（导通）","记忆上一次的状态"],[
+     "00","01","02"]],
+   "PVALUE": "HEX:",
+   "CMDID": "0401"
+  },{
+   "PNOTE": "定义第3路继电器的初始状态",
+   "PNAME": "DO3初始值",
+   "ONSET": "",
+   "ONGET": "",
+   "ONLIST": [
+    [
+     "低（断开）","高（导通）","记忆上一次的状态"],[
+     "00","01","02"]],
+   "PVALUE": "HEX:",
+   "CMDID": "0402"
+  },{
+   "PNOTE": "定义第4路继电器的初始状态",
+   "PNAME": "DO4初始值",
+   "ONSET": "",
+   "ONGET": "",
+   "ONLIST": [
+    [
+     "低（断开）","高（导通）","记忆上一次的状态"],[
+     "00","01","02"]],
+   "PVALUE": "HEX:",
+   "CMDID": "0403"
+  },{
+   "PNOTE": "",
+   "PNAME": "<DI触发告警配置>",
+   "ONSET": "",
+   "ONGET": "",
+   "ONLIST": "",
+   "PVALUE": "",
+   "CMDID": ""
+  },{
+   "PNOTE": "配置DI1变化告警",
+   "PNAME": "DI1触发告警",
+   "ONSET": "",
+   "ONGET": "",
+   "ONLIST": [
+    [
+     "不告警","低触发","高触发"],[
+     "00","01","02"]],
+   "PVALUE": "HEX:",
+   "CMDID": "0404"
+  },{
+   "PNOTE": "配置DI2变化告警",
+   "PNAME": "DI2触发告警",
+   "ONSET": "",
+   "ONGET": "",
+   "ONLIST": [
+    [
+     "不告警","低触发","高触发"],[
+     "00","01","02"]],
+   "PVALUE": "HEX:",
+   "CMDID": "0405"
+  },{
+   "PNOTE": "配置DI3变化告警",
+   "PNAME": "DI3触发告警",
+   "ONSET": "",
+   "ONGET": "",
+   "ONLIST": [
+    [
+     "不告警","低触发","高触发"],[
+     "00","01","02"]],
+   "PVALUE": "HEX:",
+   "CMDID": "0406"
+  },{
+   "PNOTE": "配置DI4变化告警",
+   "PNAME": "DI4触发告警",
+   "ONSET": "",
+   "ONGET": "",
+   "ONLIST": [
+    [
+     "不告警","低触发","高触发"],[
+     "00","01","02"]],
+   "PVALUE": "HEX:",
+   "CMDID": "0407"
+  },{
+   "PNOTE": "",
+   "PNAME": "<DI周期告警时间配置，当DI维持告警状态时，配置周期发送告警的时间，DI恢复时，会发送一次恢复告警信息>",
+   "ONSET": "",
+   "ONGET": "",
+   "ONLIST": "",
+   "PVALUE": "",
+   "CMDID": ""
+  },{
+   "PNOTE": "配置DI1维持告警状态时周期发送告警的时间，单位为分钟，0表示只告警一次，不周期告警",
+   "PNAME": "DI1告警周期",
+   "ONSET": "SetWord();",
+   "ONGET": "GetWord();",
+   "ONLIST": "",
+   "PVALUE": "HEX:",
+   "CMDID": "0430"
+  },{
+   "PNOTE": "配置DI2维持告警状态时周期发送告警的时间，单位为分钟，0表示只告警一次，不周期告警",
+   "PNAME": "DI2告警周期",
+   "ONSET": "SetWord();",
+   "ONGET": "GetWord();",
+   "ONLIST": "",
+   "PVALUE": "HEX:",
+   "CMDID": "0431"
+  },{
+   "PNOTE": "配置DI3维持告警状态时周期发送告警的时间，单位为分钟，0表示只告警一次，不周期告警",
+   "PNAME": "DI3告警周期",
+   "ONSET": "SetWord();",
+   "ONGET": "GetWord();",
+   "ONLIST": "",
+   "PVALUE": "HEX:",
+   "CMDID": "0432"
+  },{
+   "PNOTE": "配置DI4维持告警状态时周期发送告警的时间，单位为分钟，0表示只告警一次，不周期告警",
+   "PNAME": "DI4告警周期",
+   "ONSET": "SetWord();",
+   "ONGET": "GetWord();",
+   "ONLIST": "",
+   "PVALUE": "HEX:",
+   "CMDID": "0433"
+  },{
+   "PNOTE": "",
+   "PNAME": "<配置AI模拟量告警的上下限值>",
+   "ONSET": "",
+   "ONGET": "",
+   "ONLIST": "",
+   "PVALUE": "",
+   "CMDID": ""
+  },{
+   "PNOTE": "浮点数,AI1低于下限值时，RTU告警",
+   "PNAME": "AI1告警下限值",
+   "ONSET": "SetFloat();",
+   "ONGET": "GetFloat();",
+   "ONLIST": "",
+   "PVALUE": "HEX:",
+   "CMDID": "0420"
+  },{
+   "PNOTE": "浮点数,AI1高于上限值时，RTU告警",
+   "PNAME": "AI1告警上限值",
+   "ONSET": "SetFloat();",
+   "ONGET": "GetFloat();",
+   "ONLIST": "",
+   "PVALUE": "HEX:",
+   "CMDID": "0421"
+  },{
+   "PNOTE": "浮点数,AI2低于下限值时，RTU告警",
+   "PNAME": "AI2告警下限值",
+   "ONSET": "SetFloat();",
+   "ONGET": "GetFloat();",
+   "ONLIST": "",
+   "PVALUE": "HEX:",
+   "CMDID": "0422"
+  },{
+   "PNOTE": "浮点数,AI2高于上限值时，RTU告警",
+   "PNAME": "AI2告警上限值",
+   "ONSET": "SetFloat();",
+   "ONGET": "GetFloat();",
+   "ONLIST": "",
+   "PVALUE": "HEX:",
+   "CMDID": "0423"
+  },{
+   "PNOTE": "浮点数,AI3低于下限值时，RTU告警",
+   "PNAME": "AI3告警下限值",
+   "ONSET": "SetFloat();",
+   "ONGET": "GetFloat();",
+   "ONLIST": "",
+   "PVALUE": "HEX:",
+   "CMDID": "0424"
+  },{
+   "PNOTE": "浮点数,AI3高于上限值时，RTU告警",
+   "PNAME": "AI3告警上限值",
+   "ONSET": "SetFloat();",
+   "ONGET": "GetFloat();",
+   "ONLIST": "",
+   "PVALUE": "HEX:",
+   "CMDID": "0425"
+  },{
+   "PNOTE": "浮点数,AI4低于下限值时，RTU告警",
+   "PNAME": "AI4告警下限值",
+   "ONSET": "SetFloat();",
+   "ONGET": "GetFloat();",
+   "ONLIST": "",
+   "PVALUE": "HEX:",
+   "CMDID": "0426"
+  },{
+   "PNOTE": "浮点数,AI4高于上限值时，RTU告警",
+   "PNAME": "AI4告警上限值",
+   "ONSET": "SetFloat();",
+   "ONGET": "GetFloat();",
+   "ONLIST": "",
+   "PVALUE": "HEX:",
+   "CMDID": "0427"
+  },{
+   "PNOTE": "浮点数,AI5低于下限值时，RTU告警",
+   "PNAME": "AI5告警下限值",
+   "ONSET": "SetFloat();",
+   "ONGET": "GetFloat();",
+   "ONLIST": "",
+   "PVALUE": "HEX:",
+   "CMDID": "0428"
+  },{
+   "PNOTE": "浮点数,AI5高于上限值时，RTU告警",
+   "PNAME": "AI5告警上限值",
+   "ONSET": "SetFloat();",
+   "ONGET": "GetFloat();",
+   "ONLIST": "",
+   "PVALUE": "HEX:",
+   "CMDID": "0429"
+  },{
+   "PNOTE": "浮点数,AI6低于下限值时，RTU告警",
+   "PNAME": "AI6告警下限值",
+   "ONSET": "SetFloat();",
+   "ONGET": "GetFloat();",
+   "ONLIST": "",
+   "PVALUE": "HEX:",
+   "CMDID": "042A"
+  },{
+   "PNOTE": "浮点数,AI6高于上限值时，RTU告警",
+   "PNAME": "AI6告警上限值",
+   "ONSET": "SetFloat();",
+   "ONGET": "GetFloat();",
+   "ONLIST": "",
+   "PVALUE": "HEX:",
+   "CMDID": "042B"
+  },{
+   "PNOTE": "浮点数,AI7低于下限值时，RTU告警",
+   "PNAME": "AI7告警下限值",
+   "ONSET": "SetFloat();",
+   "ONGET": "GetFloat();",
+   "ONLIST": "",
+   "PVALUE": "HEX:",
+   "CMDID": "042C"
+  },{
+   "PNOTE": "浮点数,AI7高于上限值时，RTU告警",
+   "PNAME": "AI7告警上限值",
+   "ONSET": "SetFloat();",
+   "ONGET": "GetFloat();",
+   "ONLIST": "",
+   "PVALUE": "HEX:",
+   "CMDID": "042D"
+  },{
+   "PNOTE": "浮点数,AI8低于下限值时，RTU告警",
+   "PNAME": "AI8告警下限值",
+   "ONSET": "SetFloat();",
+   "ONGET": "GetFloat();",
+   "ONLIST": "",
+   "PVALUE": "HEX:",
+   "CMDID": "042E"
+  },{
+   "PNOTE": "浮点数,AI8高于上限值时，RTU告警",
+   "PNAME": "AI8告警上限值",
+   "ONSET": "SetFloat();",
+   "ONGET": "GetFloat();",
+   "ONLIST": "",
+   "PVALUE": "HEX:",
+   "CMDID": "042F"
+  },{
+   "PNOTE": "",
+   "PNAME": "<AI周期告警时间配置，当AI超过上下限时，配置周期发送告警的时间，AI恢复到正常值时，会发送一次恢复告警信息>",
+   "ONSET": "",
+   "ONGET": "",
+   "ONLIST": "",
+   "PVALUE": "",
+   "CMDID": ""
+  },{
+   "PNOTE": "AI1周期告警的时间间隔，单位为分钟，0表示只告警一次",
+   "PNAME": "AI1告警周期",
+   "ONSET": "SetWord();",
+   "ONGET": "GetWord();",
+   "ONLIST": "",
+   "PVALUE": "HEX:",
+   "CMDID": "0434"
+  },{
+   "PNOTE": "AI2周期告警的时间间隔，单位为分钟，0表示只告警一次",
+   "PNAME": "AI2告警周期",
+   "ONSET": "SetWord();",
+   "ONGET": "GetWord();",
+   "ONLIST": "",
+   "PVALUE": "HEX:",
+   "CMDID": "0435"
+  },{
+   "PNOTE": "AI3周期告警的时间间隔，单位为分钟，0表示只告警一次",
+   "PNAME": "AI3告警周期",
+   "ONSET": "SetWord();",
+   "ONGET": "GetWord();",
+   "ONLIST": "",
+   "PVALUE": "HEX:",
+   "CMDID": "0436"
+  },{
+   "PNOTE": "AI4周期告警的时间间隔，单位为分钟，0表示只告警一次",
+   "PNAME": "AI4告警周期",
+   "ONSET": "SetWord();",
+   "ONGET": "GetWord();",
+   "ONLIST": "",
+   "PVALUE": "HEX:",
+   "CMDID": "0437"
+  },{
+   "PNOTE": "AI5周期告警的时间间隔，单位为分钟，0表示只告警一次",
+   "PNAME": "AI5告警周期",
+   "ONSET": "SetWord();",
+   "ONGET": "GetWord();",
+   "ONLIST": "",
+   "PVALUE": "HEX:",
+   "CMDID": "0438"
+  },{
+   "PNOTE": "AI6周期告警的时间间隔，单位为分钟，0表示只告警一次",
+   "PNAME": "AI6告警周期",
+   "ONSET": "SetWord();",
+   "ONGET": "GetWord();",
+   "ONLIST": "",
+   "PVALUE": "HEX:",
+   "CMDID": "0439"
+  },{
+   "PNOTE": "AI7周期告警的时间间隔，单位为分钟，0表示只告警一次",
+   "PNAME": "AI7告警周期",
+   "ONSET": "SetWord();",
+   "ONGET": "GetWord();",
+   "ONLIST": "",
+   "PVALUE": "HEX:",
+   "CMDID": "043A"
+  },{
+   "PNOTE": "AI8周期告警的时间间隔，单位为分钟，0表示只告警一次",
+   "PNAME": "AI8告警周期",
+   "ONSET": "SetWord();",
+   "ONGET": "GetWord();",
+   "ONLIST": "",
+   "PVALUE": "HEX:",
+   "CMDID": "043B"
+  },{
+   "PNOTE": "当告警通道设置为短信时，此项参数才有效",
+   "PNAME": "<AI短信告警内容参数，最多30个汉字或60个字符>",
+   "ONSET": "",
+   "ONGET": "",
+   "ONLIST": "",
+   "PVALUE": "",
+   "CMDID": ""
+  },{
+   "PNOTE": "当AI1超过上下限时，向手机号码发送的短信内容",
+   "PNAME": "AI1告警短信内容",
+   "ONSET": "SetStr();",
+   "ONGET": "GetStr();",
+   "ONLIST": "",
+   "PVALUE": "HEX:",
+   "CMDID": "0450"
+  },{
+   "PNOTE": "当AI2超过上下限时，向手机号码发送的短信内容",
+   "PNAME": "AI2告警短信内容",
+   "ONSET": "SetStr();",
+   "ONGET": "GetStr();",
+   "ONLIST": "",
+   "PVALUE": "HEX:",
+   "CMDID": "0451"
+  },{
+   "PNOTE": "当AI3超过上下限时，向手机号码发送的短信内容",
+   "PNAME": "AI3告警短信内容",
+   "ONSET": "SetStr();",
+   "ONGET": "GetStr();",
+   "ONLIST": "",
+   "PVALUE": "HEX:",
+   "CMDID": "0452"
+  },{
+   "PNOTE": "当AI4超过上下限时，向手机号码发送的短信内容",
+   "PNAME": "AI4告警短信内容",
+   "ONSET": "SetStr();",
+   "ONGET": "GetStr();",
+   "ONLIST": "",
+   "PVALUE": "HEX:",
+   "CMDID": "0453"
+  },{
+   "PNOTE": "当AI5超过上下限时，向手机号码发送的短信内容",
+   "PNAME": "AI5告警短信内容",
+   "ONSET": "SetStr();",
+   "ONGET": "GetStr();",
+   "ONLIST": "",
+   "PVALUE": "HEX:",
+   "CMDID": "0454"
+  },{
+   "PNOTE": "当AI6超过上下限时，向手机号码发送的短信内容",
+   "PNAME": "AI6告警短信内容",
+   "ONSET": "SetStr();",
+   "ONGET": "GetStr();",
+   "ONLIST": "",
+   "PVALUE": "HEX:",
+   "CMDID": "0455"
+  },{
+   "PNOTE": "当AI7超过上下限时，向手机号码发送的短信内容",
+   "PNAME": "AI7告警短信内容",
+   "ONSET": "SetStr();",
+   "ONGET": "GetStr();",
+   "ONLIST": "",
+   "PVALUE": "HEX:",
+   "CMDID": "0456"
+  },{
+   "PNOTE": "当AI8超过上下限时，向手机号码发送的短信内容",
+   "PNAME": "AI8告警短信内容",
+   "ONSET": "SetStr();",
+   "ONGET": "GetStr();",
+   "ONLIST": "",
+   "PVALUE": "HEX:",
+   "CMDID": "0457"
+  },{
+   "PNOTE": "当告警通道设置为短信时，此项参数才有效",
+   "PNAME": "<AI短信恢复告警内容参数，最多30个汉字或60个字符>",
+   "ONSET": "",
+   "ONGET": "",
+   "ONLIST": "",
+   "PVALUE": "",
+   "CMDID": ""
+  },{
+   "PNOTE": "当AI1恢复到上下限之间时，向手机号码发送的短信内容",
+   "PNAME": "AI1恢复短信内容",
+   "ONSET": "SetStr();",
+   "ONGET": "GetStr();",
+   "ONLIST": "",
+   "PVALUE": "HEX:",
+   "CMDID": "045C"
+  },{
+   "PNOTE": "当AI2恢复到上下限之间时，向手机号码发送的短信内容",
+   "PNAME": "AI2恢复短信内容",
+   "ONSET": "SetStr();",
+   "ONGET": "GetStr();",
+   "ONLIST": "",
+   "PVALUE": "HEX:",
+   "CMDID": "045D"
+  },{
+   "PNOTE": "当AI3恢复到上下限之间时，向手机号码发送的短信内容",
+   "PNAME": "AI3恢复短信内容",
+   "ONSET": "SetStr();",
+   "ONGET": "GetStr();",
+   "ONLIST": "",
+   "PVALUE": "HEX:",
+   "CMDID": "045E"
+  },{
+   "PNOTE": "当AI4恢复到上下限之间时，向手机号码发送的短信内容",
+   "PNAME": "AI4恢复短信内容",
+   "ONSET": "SetStr();",
+   "ONGET": "GetStr();",
+   "ONLIST": "",
+   "PVALUE": "HEX:",
+   "CMDID": "045F"
+  },{
+   "PNOTE": "当AI5恢复到上下限之间时，向手机号码发送的短信内容",
+   "PNAME": "AI5恢复短信内容",
+   "ONSET": "SetStr();",
+   "ONGET": "GetStr();",
+   "ONLIST": "",
+   "PVALUE": "HEX:",
+   "CMDID": "0460"
+  },{
+   "PNOTE": "当AI6恢复到上下限之间时，向手机号码发送的短信内容",
+   "PNAME": "AI6恢复短信内容",
+   "ONSET": "SetStr();",
+   "ONGET": "GetStr();",
+   "ONLIST": "",
+   "PVALUE": "HEX:",
+   "CMDID": "0461"
+  },{
+   "PNOTE": "当AI7恢复到上下限之间时，向手机号码发送的短信内容",
+   "PNAME": "AI7恢复短信内容",
+   "ONSET": "SetStr();",
+   "ONGET": "GetStr();",
+   "ONLIST": "",
+   "PVALUE": "HEX:",
+   "CMDID": "0462"
+  },{
+   "PNOTE": "当AI8恢复到上下限之间时，向手机号码发送的短信内容",
+   "PNAME": "AI8恢复短信内容",
+   "ONSET": "SetStr();",
+   "ONGET": "GetStr();",
+   "ONLIST": "",
+   "PVALUE": "HEX:",
+   "CMDID": "0463"
+  },{
+   "PNOTE": "当告警通道设置为短信时，此项参数才有效",
+   "PNAME": "<DI短信告警内容参数，最多30个汉字或60个字符>",
+   "ONSET": "",
+   "ONGET": "",
+   "ONLIST": "",
+   "PVALUE": "",
+   "CMDID": ""
+  },{
+   "PNOTE": "当DI1触发告警时，向手机号码发送的短信内容",
+   "PNAME": "DI1告警短信内容",
+   "ONSET": "SetStr();",
+   "ONGET": "GetStr();",
+   "ONLIST": "",
+   "PVALUE": "HEX:",
+   "CMDID": "0458"
+  },{
+   "PNOTE": "当DI2触发告警时，向手机号码发送的短信内容",
+   "PNAME": "DI2告警短信内容",
+   "ONSET": "SetStr();",
+   "ONGET": "GetStr();",
+   "ONLIST": "",
+   "PVALUE": "HEX:",
+   "CMDID": "0459"
+  },{
+   "PNOTE": "当DI3触发告警时，向手机号码发送的短信内容",
+   "PNAME": "DI3告警短信内容",
+   "ONSET": "SetStr();",
+   "ONGET": "GetStr();",
+   "ONLIST": "",
+   "PVALUE": "HEX:",
+   "CMDID": "045A"
+  },{
+   "PNOTE": "当DI4触发告警时，向手机号码发送的短信内容",
+   "PNAME": "DI4告警短信内容",
+   "ONSET": "SetStr();",
+   "ONGET": "GetStr();",
+   "ONLIST": "",
+   "PVALUE": "HEX:",
+   "CMDID": "045B"
+  },{
+   "PNOTE": "当告警通道设置为短信时，此项参数才有效",
+   "PNAME": "<DI短信恢复告警内容参数，最多30个汉字或60个字符>",
+   "ONSET": "",
+   "ONGET": "",
+   "ONLIST": "",
+   "PVALUE": "",
+   "CMDID": ""
+  },{
+   "PNOTE": "当DI1恢复到正常状态时，向手机号码发送的短信内容",
+   "PNAME": "DI1恢复短信内容",
+   "ONSET": "SetStr();",
+   "ONGET": "GetStr();",
+   "ONLIST": "",
+   "PVALUE": "HEX:",
+   "CMDID": "0464"
+  },{
+   "PNOTE": "当DI2恢复到正常状态时，向手机号码发送的短信内容",
+   "PNAME": "DI2恢复短信内容",
+   "ONSET": "SetStr();",
+   "ONGET": "GetStr();",
+   "ONLIST": "",
+   "PVALUE": "HEX:",
+   "CMDID": "0465"
+  },{
+   "PNOTE": "当DI3恢复到正常状态时，向手机号码发送的短信内容",
+   "PNAME": "DI3恢复短信内容",
+   "ONSET": "SetStr();",
+   "ONGET": "GetStr();",
+   "ONLIST": "",
+   "PVALUE": "HEX:",
+   "CMDID": "0466"
+  },{
+   "PNOTE": "当DI4恢复到正常状态时，向手机号码发送的短信内容",
+   "PNAME": "DI4恢复短信内容",
+   "ONSET": "SetStr();",
+   "ONGET": "GetStr();",
+   "ONLIST": "",
+   "PVALUE": "HEX:",
+   "CMDID": "0467"
+  },{
+   "PNOTE": "配置AI通道采样的类型，电流，电压，与硬件相关",
+   "PNAME": "AI类型",
+   "ONSET": "",
+   "ONGET": "",
+   "ONLIST": "",
+   "PVALUE": "",
+   "CMDID": ""
+  },{
+   "PNOTE": "AI1类型",
+   "PNAME": "AI1类型",
+   "ONSET": "",
+   "ONGET": "",
+   "ONLIST": [
+    [
+     "电流","电压0-5V","电压0-10V","电压0-2.5V","电压0-35V"],[
+     "00","01","02","03","04"]],
+   "PVALUE": "HEX:",
+   "CMDID": "0414"
+  },{
+   "PNOTE": "AI2类型",
+   "PNAME": "AI2类型",
+   "ONSET": "",
+   "ONGET": "",
+   "ONLIST": [
+    [
+     "电流","电压0-5V","电压0-10V","电压0-2.5V","电压0-35V"],[
+     "00","01","02","03","04"]],
+   "PVALUE": "HEX:",
+   "CMDID": "0415"
+  },{
+   "PNOTE": "AI3类型",
+   "PNAME": "AI3类型",
+   "ONSET": "",
+   "ONGET": "",
+   "ONLIST": [
+    [
+     "电流","电压0-5V","电压0-10V","电压0-2.5V","电压0-35V"],[
+     "00","01","02","03","04"]],
+   "PVALUE": "HEX:",
+   "CMDID": "0416"
+  },{
+   "PNOTE": "AI4类型",
+   "PNAME": "AI4类型",
+   "ONSET": "",
+   "ONGET": "",
+   "ONLIST": [
+    [
+     "电流","电压0-5V","电压0-10V","电压0-2.5V","电压0-35V"],[
+     "00","01","02","03","04"]],
+   "PVALUE": "HEX:",
+   "CMDID": "0417"
+  },{
+   "PNOTE": "AI5类型",
+   "PNAME": "AI5类型",
+   "ONSET": "",
+   "ONGET": "",
+   "ONLIST": [
+    [
+     "电流","电压0-5V","电压0-10V","电压0-2.5V","电压0-35V"],[
+     "00","01","02","03","04"]],
+   "PVALUE": "HEX:",
+   "CMDID": "0418"
+  },{
+   "PNOTE": "AI6类型",
+   "PNAME": "AI6类型",
+   "ONSET": "",
+   "ONGET": "",
+   "ONLIST": [
+    [
+     "电流","电压0-5V","电压0-10V","电压0-2.5V","电压0-35V"],[
+     "00","01","02","03","04"]],
+   "PVALUE": "HEX:",
+   "CMDID": "0419"
+  },{
+   "PNOTE": "AI7类型",
+   "PNAME": "AI7类型",
+   "ONSET": "",
+   "ONGET": "",
+   "ONLIST": [
+    [
+     "电流","电压0-5V","电压0-10V","电压0-2.5V","电压0-35V"],[
+     "00","01","02","03","04"]],
+   "PVALUE": "HEX:",
+   "CMDID": "041A"
+  },{
+   "PNOTE": "AI8类型",
+   "PNAME": "AI8类型",
+   "ONSET": "",
+   "ONGET": "",
+   "ONLIST": [
+    [
+     "电流","电压0-5V","电压0-10V","电压0-2.5V","电压0-35V"],[
+     "00","01","02","03","04"]],
+   "PVALUE": "HEX:",
+   "CMDID": "041B"
+  }],
+ "Buttons": [
+  {
+   "ONCLICK": "SetClock();",
+   "ONREPLY": "ret=toAscii();",
+   "BNAME": "主机校时"
+  },{
+   "ONCLICK": "GetTime();",
+   "ONREPLY": "ret=toAscii();",
+   "BNAME": "读取主机时钟"
+  },{
+   "ONCLICK": "GetVersion();",
+   "ONREPLY": "ret=toAscii();",
+   "BNAME": "读取主机版本信息"
+  },{
+   "ONCLICK": "GetGPRSState();",
+   "ONREPLY": "OnGPRSState();",
+   "BNAME": "获取GPRS网络状态"
+  },{
+   "ONCLICK": "GetBATVCC();",
+   "ONREPLY": "ret=toAscii();",
+   "BNAME": "读取电池电压"
+  },{
+   "ONCLICK": "GetTemperature();",
+   "ONREPLY": "ret=toAscii();",
+   "BNAME": "读取当前温度"
+  },{
+   "ONCLICK": "GetRFSW();",
+   "ONREPLY": "ret=toAscii();",
+   "BNAME": "读取雨量开关状态"
+  },{
+   "ONCLICK": "GetGSMSignal();",
+   "ONREPLY": "ret=toAscii();",
+   "BNAME": "GSM信号强度"
+  }],
+ "Title": "（RTU）"
+}
